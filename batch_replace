@@ -1,7 +1,7 @@
 ////////////////////////////
 // Ansible output
 
-replace-regex "TASK.*"
+replace-regex "TASK .*"
 with ""
 
 replace-regex "ok:.*"
@@ -42,6 +42,9 @@ with "controller_objects_credential_types"
 
 replace "    "controller_objects_credentials_organizational""
 with "controller_objects_credentials_organizational"
+
+replace "    "controller_objects_credentials_personal""
+with "controller_objects_credentials_personal"
 
 replace "    "controller_objects_organizations""
 with "controller_objects_organizations"
@@ -242,15 +245,6 @@ with "},\n\n  {'"
 ////////////////////////////
 // Final adjustments
 
-replace-regex "}\n\n"
-with "\n"
-
-replace-regex "    ]\n\n"
-with "] # type: ignore\n"
-
-replace "": {"
-with ": {"
-
 replace "  ""
 with "  '"
 
@@ -269,14 +263,23 @@ with "': '"
 replace "": "
 with "': "
 
-replace "\""
-with """
-
-replace "\\\\n"
-with "\n"
+replace "\\\\"
+with "\"
 
 replace "\\"
 with "\"
+
+replace " \""
+with " ""
+
+replace "","
+with "',"
+
+replace "\',"
+with "","
+
+replace "\""
+with """
 
 replace " '{{ "
 with " !unsafe '{{ " 
@@ -291,4 +294,13 @@ replace ": '"{{ "
 with ": !unsafe '"{{ "
 
 replace-regex "}\n\n"
+with ""
+
+replace-regex "}\n\n"
 with "} # type: ignore\n"
+
+replace-regex "    ]\n\n"
+with "] # type: ignore\n"
+
+replace-regex ""\n"
+with "'\n"
