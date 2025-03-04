@@ -211,6 +211,9 @@ with ",\n              'unified_job_template'"
 replace-regex ", 'related'"
 with ",\n              'related'"
 
+replace-regex ", 'create_approval_template'"
+with ",\n              'create_approval_template'"
+
 replace-regex "}}', '"
 with "}}',\n                                '"
 
@@ -226,8 +229,8 @@ with "],\n               'hosts'"
 replace-regex "}, 'subgroups'"
 with "},\n               'subgroups'"
 
-replace-regex "]}}, {'extra_data'"
-with "]}},\n             {'extra_data'"
+replace-regex "}}, {'extra_data'"
+with "}},\n             {'extra_data'"
 
 
 ////////////////////////////
